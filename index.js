@@ -17,8 +17,7 @@ function encrypt() {
             showConfirmButton: true
         })
     } else if (validate(inputText)) {
-        const result = encryptText(inputText);
-        printOutputText(result);
+        printOutputText(encryptText(inputText));
     } else {
         Swal.fire({
             icon: "warning",
@@ -40,37 +39,54 @@ function validate(text) {
 
 function decrypt() {
     const inputText = document.getElementById("inputText").value;
-    const outputText = document.getElementById("outputText");
-    outputText.value = "";
-    printOutputText(decryptText(inputText));
+    if (inputText.trim() === "") {
+        Swal.fire({
+            icon: "warning",
+            title: "Escriba algo para desencriptar",
+            background: "#0e4280",
+            position: "center",
+            showConfirmButton: true
+        })
+    } else if (validate(inputText)) {
+        printOutputText(decryptText(inputText));
+    } else {
+        Swal.fire({
+            icon: "warning",
+            title: "El texto no debe contener letras mayusculas ni caracteres especiales",
+            background: "#0e4280",
+            position: "center",
+            showConfirmButton: true
+        })
+    }
+
 
 }
 
 const encryptText = (text) => {
-    let encryptText = text.replace(/e/g, "enter");
-    encryptText = encryptText.replace(/i/g, "imes");
-    encryptText = encryptText.replace(/a/g, "ai");
-    encryptText = encryptText.replace(/o/g, "ober");
-    encryptText = encryptText.replace(/u/g, "ufat");
-    return encryptText;
+    return text.replace(/e/g, "enter")
+        .replace(/i/g, "imes")
+        .replace(/a/g, "ai")
+        .replace(/o/g, "ober")
+        .replace(/u/g, "ufat");
 }
 
 const decryptText = (encryptedText) => {
-    let text = encryptedText.replace(/enter/g, "e");
-    text = text.replace(/imes/g, "i");
-    text = text.replace(/ai/g, "a");
-    text = text.replace(/ober/g, "o");
-    text = text.replace(/ufat/g, "u");
-    return text;
+    return encryptedText.replace(/enter/g, "e")
+        .replace(/imes/g, "i")
+        .replace(/ai/g, "a")
+        .replace(/ober/g, "o")
+        .replace(/ufat/g, "u");
 }
 
 function printOutputText(text) {
     const outputText = document.getElementById("outputText");
-    outputText.style.display = "block";
-    btnCopy.style.display = "inline";
-    const asideElements = document.getElementsByClassName("changeVisibility");
-    for (const element of asideElements) {
-        element.style.display = "none";
+    if (getComputedStyle(outputText).getPropertyValue("display") === "none") {
+        outputText.style.display = "block";
+        btnCopy.style.display = "inline";
+        const asideElements = document.getElementsByClassName("changeVisibility");
+        for (const element of asideElements) {
+            element.style.display = "none";
+        }
     }
     outputText.value = text;
 
@@ -79,43 +95,29 @@ function printOutputText(text) {
 
 
 function copyToClipboard() {
-    const outputText = document.getElementById("outputText").value;
-    if (!outputText.length == 0) {
-        navigator.clipboard.writeText(outputText)
-            .then(() => {
-                Swal.fire({
-                    toast: true,
-                    icon: "success",
-                    title: "Texto copiado al portapapeles",
-                    background: "#0e4280",
-                    /*showClass: {
-                        //backdrop: 'swal2-noanimation', // disable backdrop animation
-                        //popup: '',                     // disable popup animation
-                        //icon: ''                       // disable icon animation
-                      },*/
-                    position: "center",
-                    showConfirmButton: false,
-                    timer: 1000,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-            });
-    }
+    const outputTextarea = document.getElementById("outputText");
+    const outputText = outputTextarea.value;
+    navigator.clipboard.writeText(outputText)
+        .then(() => {
+            Swal.fire({
+                toast: true,
+                icon: "success",
+                title: "Texto copiado al portapapeles",
+                background: "#0e4280",
+                /*showClass: {
+                    backdrop: 'swal2-noanimation', // disable backdrop animation
+                    popup: '',                     // disable popup animation
+                    icon: ''                       // disable icon animation
+                  },*/
+                position: "center",
+                showConfirmButton: false,
+                timer: 1000,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+        });
+    outputTextarea.value = "";
+    document.getElementById("inputText").value = "";
 }
-
-// Swal.fire({
-//     toast: true,
-//     icon: 'success',
-//     title: 'Posted successfully',
-//     animation: false,
-//     position: 'bottom',
-//     showConfirmButton: false,
-//     timer: 3000,
-//     timerProgressBar: true,
-//     didOpen: (toast) => {
-//         toast.addEventListener('mouseenter', Swal.stopTimer)
-//         toast.addEventListener('mouseleave', Swal.resumeTimer)
-//     }
-// })
