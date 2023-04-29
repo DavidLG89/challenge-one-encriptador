@@ -39,6 +39,7 @@ aside img {
     width: 90%;
     height: 50vh;
     margin: auto;
+    padding: 0.5rem;
     font-size: large;
     border-color: #F3F3F3;
     box-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.7);
@@ -62,6 +63,10 @@ aside img {
 .btnCopy:hover {
     border-color: var(--primary-hover-color);
     background: var(--primary-hover-color);
+}
+
+.logo {
+    width: 18%;
 }
 
 a {
