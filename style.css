@@ -1,0 +1,126 @@
+:root {
+    --primary-color: #0A3871;
+    --primary-hover-color: #0e4280;
+    --secondary-color: #e3e3e3;
+    --secondary-hover-color: #ededed;
+}
+
+* {
+    font-family: Metrophobic;
+}
+
+body {
+    background: #D8DFE8;
+    height: 90vh;
+    padding: 2%;
+}
+
+aside {
+    background: white;
+    float: right;
+    width: 25%;
+    height: 95%;
+    border-radius: 1em;
+    box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.7);
+    padding: 1%;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+aside img {
+    width: 90%;
+}
+
+.outputText {
+    display: none;
+    color: var(--primary-color);
+    width: 90%;
+    height: 50vh;
+    margin: auto;
+    font-size: large;
+    border-color: #F3F3F3;
+    box-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.7);
+    border-radius: 1em;
+}
+
+.btnCopy {
+    display: none;
+    color: white;
+    width: 90%;
+    height: 2em;
+    margin: 1em;
+    padding: 1%;
+    font-size: large;
+    border-radius: 2em;
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    cursor: pointer;
+}
+
+.btnCopy:hover {
+    border-color: var(--primary-hover-color);
+    background: var(--primary-hover-color);
+}
+
+a {
+    font-size: 3em;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.inputTextarea {
+    width: 50%;
+    height: 50vh;
+    display: block;
+    margin: 3em auto 0 auto;
+    padding: 1%;
+    color: var(--primary-color);
+    font-size: large;
+    border-color: #F3F3F3;
+    box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.7);
+    border-radius: 1em;
+}
+
+textarea::placeholder { 
+    color: var(--primary-color);
+    font-size: large;
+}
+.btnEncrypt {
+    color: white;
+    width: 20%;
+    margin: 0 1em;
+    padding: 1%;
+    font-size: large;
+    border-radius: 2em;
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    cursor: pointer;
+}
+.btnEncrypt:hover {
+    border-color: var(--primary-hover-color);
+    background: var(--primary-hover-color);
+}
+.btnDecrypt {
+    width: 20%;
+    margin: 0 1em;
+    padding: 1%;
+    font-size: large;
+    border-radius: 2em;
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.btnDecrypt:hover {
+    border-color: var(--secondary-hover-color);
+    background: var(--secondary-hover-color);
+}
+.button-container {
+    text-align: center;
+}
+
+
+
