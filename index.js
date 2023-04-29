@@ -8,9 +8,35 @@ btnCopy.addEventListener("click", copyToClipboard);
 
 function encrypt() {
     const inputText = document.getElementById("inputText").value;
-    const result = encryptText(inputText);
-    printOutputText(result);
+    if (inputText.trim() === "") {
+        Swal.fire({
+            icon: "warning",
+            title: "Escriba algo para encriptar",
+            background: "#0e4280",
+            position: "center",
+            showConfirmButton: true
+        })
+    } else if (validate(inputText)) {
+        const result = encryptText(inputText);
+        printOutputText(result);
+    } else {
+        Swal.fire({
+            icon: "warning",
+            title: "El texto no debe contener letras mayusculas ni caracteres especiales",
+            background: "#0e4280",
+            position: "center",
+            showConfirmButton: true
+        })
+    }
+
 }
+
+function validate(text) {
+    const pattern = new RegExp(/^[a-z\s]+$/g);
+    return pattern.test(text);
+}
+
+
 
 function decrypt() {
     const inputText = document.getElementById("inputText").value;
