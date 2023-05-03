@@ -31,7 +31,7 @@ function encrypt() {
 }
 
 function validate(text) {
-    const pattern = new RegExp(/^[a-z\s]+$/g);
+    const pattern = new RegExp(/^[a-z0-9\s]+$/g);
     return pattern.test(text);
 }
 
@@ -120,4 +120,10 @@ function copyToClipboard() {
         });
     outputTextarea.value = "";
     document.getElementById("inputText").value = "";
+    outputTextarea.style.display = "none";
+    btnCopy.style.display = "none";
+    const asideElements = document.getElementsByClassName("changeVisibility");
+    for (const element of asideElements) {
+        element.style.display = "";
+    }
 }

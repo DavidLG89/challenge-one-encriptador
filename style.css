@@ -92,12 +92,16 @@ textarea::placeholder {
     color: var(--primary-color);
     font-size: large;
 }
+.messageInfo {
+    font-weight: 600;
+}
 .btnEncrypt {
     color: white;
     width: 20%;
     margin: 0 1em;
     padding: 1%;
-    font-size: large;
+    font-size: larger;
+    font-weight: 600;
     border-radius: 2em;
     border-color: var(--primary-color);
     background: var(--primary-color);
@@ -111,7 +115,8 @@ textarea::placeholder {
     width: 20%;
     margin: 0 1em;
     padding: 1%;
-    font-size: large;
+    font-size: larger;
+    font-weight: 600;
     border-radius: 2em;
     background: var(--secondary-color);
     border-color: var(--secondary-color);
@@ -127,5 +132,9 @@ textarea::placeholder {
     text-align: center;
 }
 
-
+footer {
+    text-align: center;
+    font-weight: 600;
+    font-size: small;
+}
 
